@@ -5,4 +5,6 @@
     
     // resolve the answer with value @val
     void resolve(int val);
+    boolean isResolved();
+
 }
