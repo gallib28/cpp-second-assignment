@@ -1,13 +1,7 @@
-public class FutureImpl implements Future {
+public class FutureImpl implements Future { 
     private int value;
     private boolean resolved = false;
 
-    public FutureImpl() {
-        // Default constructor
-    }
-
-    // if the answer has been resolved - return the corresponding value;
-    // otherwise - the calling thread is *blocked*.
     public synchronized int get() {
         while (!resolved) {
             try {
@@ -19,13 +13,13 @@ public class FutureImpl implements Future {
         return value;
     }
 
-    // resolve the answer with value @val
     public synchronized void resolve(int val) {
-        if (!resolved) {
-            value = val;
-            resolved = true;
-            notifyAll();
-        }
+        value = val;
+        resolved = true;
+        notifyAll();
+    }
+
+    public synchronized boolean isResolved() {
+        return resolved;
     }
 }
- 
