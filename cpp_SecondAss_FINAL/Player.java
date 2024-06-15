@@ -35,8 +35,7 @@ public class Player {
                 newNode.next = currentHead;
             } while (!head.compareAndSet(currentHead, newNode));
             notEmpty.signal();
-        } 
-        finally {
+        } finally {
             lock.unlock();
         }
     }
@@ -59,8 +58,7 @@ public class Player {
                 }
                 newHead = currentHead.next;
             } while (!head.compareAndSet(currentHead, newHead));
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }
@@ -94,3 +92,4 @@ public class Player {
         }
     }
 }
+ 
